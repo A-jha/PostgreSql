@@ -657,4 +657,112 @@ SELECT make,SUM(price) FROM car GROUP BY make;
 | Maserati | 21880.00  |
 | Dodge    | 157526.00 |
 
-# Basic Arithmatic Operator
+## Basic Arithmatic Operator
+
+- ### alias - `AS` is an alias which is use to override the default name.
+- Let's say we are offering 10% discount in price of car then Write a query that returns original price and dicount and discounted price.
+
+```sql
+SELECT id,make,model,price,(price*.10) as discount,(price-(price*.1)) as final_price FROM car Limit 10;
+```
+
+| id  | make       | model                | price   | discount | final_price |
+| --- | ---------- | -------------------- | ------- | -------- | ----------- |
+| 1   | Infiniti   | QX                   | 2959.00 | 295.9000 | 2663.100    |
+| 2   | Lincoln    | Continental          | 2247.00 | 224.7000 | 2022.300    |
+| 3   | Lincoln    | Continental Mark VII | 3077.00 | 307.7000 | 2769.300    |
+| 4   | Oldsmobile | Alero                | 2689.00 | 268.9000 | 2420.100    |
+| 5   | Nissan     | Xterra               | 4051.00 | 405.1000 | 3645.900    |
+| 6   | Nissan     | Frontier             | 3800.00 | 380.0000 | 3420.000    |
+| 7   | Dodge      | Neon                 | 2564.00 | 256.4000 | 2307.600    |
+| 8   | Infiniti   | G                    | 2699.00 | 269.9000 | 2429.100    |
+| 9   | Infiniti   | QX                   | 4763.00 | 476.3000 | 4286.700    |
+| 10  | Volkswagen | Passat               | 2636.00 | 263.6000 | 2372.400    |
+
+(10 rows)
+
+## Coalesce
+
+- It returns the first valid(Not Null) value from the argument passed.
+- To use default value in the null palaces.
+
+```sql
+SELECT COALESCE(null,0,1) as First_valid_value;
+```
+
+| first_valid_value |
+| ----------------- |
+| 0                 |
+
+(1 row)
+
+- Example - In the person database for those who does not have email we want to add email is not provide then.
+
+```sql
+---
+SELECT COALESCE(email,'No email Provided') FROM person;
+```
+
+| email                           |
+| ------------------------------- |
+| cwestcarc@discovery.com         |
+| No email Provided               |
+| No email Provided               |
+| rginif@so-net.ne.jp             |
+| jmarnerg@xing.com               |
+| adenningtonh@simplemachines.org |
+
+## NULLIF
+
+- Division by zero through an error
+- To handle division by zero we use NULLIF
+- NULLIF Takes two argument `NULLIF(a,b);`
+
+  - if a = b then value is NULL
+  - else a
+
+  ```sql
+  SELECT 10/0;
+  ```
+
+  ERROR: division by zero
+
+  ```sql
+  SELECT 10/NULLIF(10,5);
+  ```
+
+  | ?column? |
+  | -------- |
+  | 1        |
+
+  (1 row)
+
+  ```sql
+  SELECT 10/NULLIF(5,10);
+  ```
+
+  | ?column? |
+  | -------- |
+  | 2        |
+
+  (1 row)
+
+  ```sql
+  SELECT 10/NULLIF(10,10);
+  ```
+
+  | ?column? |
+  | -------- |
+  | --       |
+
+  (1 row)
+
+  ```sql
+  SELECT COALESCE(10/NULLIF(10,10),0);
+  ```
+
+  | coalesce |
+  | -------- |
+  | 0        |
+
+  (1 row)
