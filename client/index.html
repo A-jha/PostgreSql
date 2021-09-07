@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Searcher</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h4 class="header-title">Basic search Engine</h4>
+
+        <img class="what" id="what" src="what.png" alt="what this app does?" />
+      </div>
+      <form class="search">
+        <input
+          type="text"
+          class="input"
+          id="myInput"
+          value="all"
+          placeholder="Search"
+        />
+        <button class="btn search-btn" type="submit" id="button">Search</button>
+      </form>
+      <div class="card-container" id="card-container">
+        <!-- 
+           ----This card is just a place holder----->
+        <div class="card">
+          <h2>Name :<span class="name"> Avinash Jha</span></h2>
+          <p>User Id :<span class="id">007</span></p>
+          <p>Country: <span class="country">In</span></p>
+        </div>
+      </div>
+      <div class="modal-overlay">
+        <div class="modal-container">
+          <h3>Simple App which Fech data from the Database and shown you..</h3>
+          <button class="close-btn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <h4>Created By Avinash Jha and &copy; 2021 of Avinash Jha</h4>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
